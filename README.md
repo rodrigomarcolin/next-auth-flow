@@ -1,4 +1,4 @@
-# Personal Manager
+# Next Auth Flow
 
 _don't mind the cats_
 
@@ -20,18 +20,18 @@ Client-Side Components can access the Auth state variables provided by the Auth 
 
 Modifying the token storage strategy might be the first thing to do. It uses cookies for now but you might want to tweak how those tokens are stored. In that case you should modify the tokenService available in src/services/tokenService.js
 
-Or maybe the API you use deals with different user informations than mine. In that case you should change:
+Or maybe the API you want to use deals with different user informations than mine. In that case you should change:
 
 - auth service available in src/services/authService.js
 - auth context available in src/contexts/authContext.js
 
-Then just build new pages keeping the current pattern in mind. There should be plenty of examples of pages dealing with both ss-components and cs-components for you to be inspired from. Please **keep in mind that the layout and design of this project was not given a lot of thought and effort, since its main goal is to be a starter that can be expanded upon and completely customized. Pages and components should and must be added and modified.**.
+Then just build new pages keeping the current pattern in mind. There should be plenty of examples of pages dealing with both ss-components and cs-components for you to be inspired from. Please **keep in mind that not much of thought and effort was put into the layout and design of this project, since its main goal is to teach me about auth**. If you want to use it as a starter that can be expanded upon and completely customized - as I myself plan to do - then **pages and components should and must be added and modified.**.
 
 ## Running
 
-I used Node v18. Just `npm install && npm run dev` as usual. If you want to see it working with my API as well, [you can see how to set it up in its repo page](https://github.com/rodrigomarcolin/gefin-backend);
+I used Node v18. Just `npm install && npm run dev` as usual. If you want to see it working with my API as well, [its repo page should help you get it up and running](https://github.com/rodrigomarcolin/gefin-backend);
 
-## Maganing Colors
+## Managing Colors
 
 https://uicolors.app/create
 https://www.tailwindshades.com/
