@@ -14,16 +14,17 @@ export const authService = {
         throw new Error('Usuário ou senha inválidos!');
       const body = respostaDoServidor.body;
       tokenService.save(body?.access);
+      return body?.access;
     });
   },
-  async getSession(ctx = null) {
-    const token = await tokenService.get(ctx);
+  async getSession(ctx = null, token = null) {
+    const usableToken = token || await tokenService.get(ctx);
     return HttpClient(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/users/me/`,
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer  ${token}`,
+          Authorization: `Bearer  ${usableToken}`,
         },
       },
     ).then((response) => {

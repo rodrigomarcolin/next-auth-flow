@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import React from 'react';
 import Navbar from './components/Navbar';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <header className="flex px-4 py-5 bg-primary-light">
-          <Navbar/>
-        </header>
-        {children}
+        <AuthProvider>
+          <header className="flex px-4 py-5 bg-primary-light">
+            <Navbar />
+          </header>
+          {children}
+        </AuthProvider>
         <footer className=" flex items-center px-8 py-7 gap-4 w-screen mt-auto">
           <div className="w-full max-w-7xl flex flex-col gap-3 md:flex-row justify-between items-center mx-auto">
             <h2 className="font-bold text-xl text-font">Manager</h2>

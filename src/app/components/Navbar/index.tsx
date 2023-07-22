@@ -1,16 +1,13 @@
-import { authService } from '@/services/auth/authService';
+'use client';
+
 import NavLinks from './NavLinks';
 import Link from 'next/link';
 import { NavLinkType } from './interfaces';
+import { AuthContext } from '@/contexts/AuthContext';
+import { useContext, useEffect } from 'react';
 
-async function getUser() {
-  const data = await authService.getSession();
-  console.log(data);
-  return data;
-}
-
-const Navbar = async () => {
-  const user = await getUser();
+const Navbar = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
   const loggedOutLinks: NavLinkType[] = [
     {
@@ -47,13 +44,12 @@ const Navbar = async () => {
     <nav className="flex items-center gap-4 w-full max-w-7xl mx-auto justify-between">
       <Link href="/">
         <div className="flex items-center gap-4 hover:cursor-pointer">
-          <img src="/logo.png" width={32} height={32} alt="Logo" />
+          <img src="/images/cute_close.jpg" width={32} height={32} alt="Logo" />
           <h2 className="font-bold text-xl md:text-3xl text-font">Manager</h2>
         </div>
       </Link>
-
       <div className="flex items-center gap-4">
-        <NavLinks links={user ? loggedInLinks : loggedOutLinks} />
+        <NavLinks links={isAuthenticated ? loggedInLinks : loggedOutLinks} />
       </div>
     </nav>
   );

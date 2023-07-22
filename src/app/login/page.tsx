@@ -1,19 +1,17 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { authService } from '@/services/auth/authService';
 import { useRouter } from 'next/navigation';
-
-interface IUserLogin {
-  username: string;
-  password: string;
-}
+import { AuthContext, LoginData } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
-  const [formInfo, setFormInfo] = useState<IUserLogin>({
+  const { login } = useContext(AuthContext);
+  const [formInfo, setFormInfo] = useState<LoginData>({
     username: '',
     password: '',
   });
+  
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     const name = event.currentTarget.name;
@@ -22,15 +20,16 @@ export default function LoginPage() {
       [name]: value,
     });
   };
+
   const router = useRouter();
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    authService.login(formInfo).then(() => router.push('/protected'));
+    login(formInfo).then(() => router.push('/protected'));
   };
 
   return (
     <>
-      <main className="flex flex-col flex-grow items-center justify-center px-4">
+      <main className="flex flex-row flex-grow items-center justify-around px-4">
         <form
           onSubmit={(event) => handleSubmit(event)}
           className="max-w-sm flex flex-col gap-3 w-full items-center border border-2 border-red-600 p-8"
@@ -62,6 +61,11 @@ export default function LoginPage() {
             Login
           </button>
         </form>
+        <img
+          src="/images/gentleman.jpg"
+          alt="Gatito"
+          className="max-w-xs w-full max-h-full hidden md:block"
+        />
       </main>
     </>
   );

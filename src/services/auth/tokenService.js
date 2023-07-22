@@ -1,7 +1,7 @@
 import nookies from 'nookies';
 import { cookies } from 'next/dist/client/components/headers';
 
-const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN_KEY';
+const ACCESS_TOKEN_KEY = 'PMANAGER.ACCESS_TOKEN_KEY';
 
 const ONE_SECOND = 1;
 const ONE_MINUTE = ONE_SECOND * 60;
@@ -18,6 +18,9 @@ export const tokenService = {
   },
   async get() {
     return cookies().get(ACCESS_TOKEN_KEY)?.value;
+  },
+  getClientSide() {
+    return nookies.get(null, ACCESS_TOKEN_KEY)[ACCESS_TOKEN_KEY];
   },
   async delete(ctx = null) {
     await cookies().set(ctx, ACCESS_TOKEN_KEY, '', {

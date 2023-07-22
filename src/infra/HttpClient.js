@@ -1,11 +1,12 @@
 // Arquitetura Hexagonal
 // Ports & Adapters
-export async function HttpClient(fetchUrl, fetchOptions) {
+export async function HttpClient(fetchUrl, fetchOptions = {}) {
+  const headers = fetchOptions.headers || {};
   const options = {
     ...fetchOptions,
     headers: {
       'Content-Type': 'application/json',
-      ...fetchOptions.headers,
+      ...headers,
     },
     body: fetchOptions.body ? JSON.stringify(fetchOptions.body) : null,
   };
