@@ -27,6 +27,10 @@ Or maybe the API you use deals with different user informations than mine. In th
 
 Then just build new pages keeping the current pattern in mind. There should be plenty of examples of pages dealing with both ss-components and cs-components for you to be inspired from. Please **keep in mind that the layout and design of this project was not given a lot of thought and effort, since its main goal is to be a starter that can be expanded upon and completely customized. Pages and components should and must be added and modified.**.
 
+## Running
+
+I used Node v18. Just `npm install && npm run dev` as usual. If you want to see it working with my API as well, [you can see how to set it up in its repo page](https://github.com/rodrigomarcolin/gefin-backend);
+
 ## Maganing Colors
 
 https://uicolors.app/create
@@ -46,8 +50,8 @@ https://gourav.io/blog/nextjs-cheatsheet#add-eslint-to-nextjs-typescript-project
 - Authenticated pages
 - better parametrization (env variables)
 
-
 ## Learning Resources
+
 - [Documentação Next](https://nextjs.org/docs/app)
 - [Next.js - Autenticação JWT com back-end próprio - Code/Drops #72 | Rocketseat](https://www.youtube.com/watch?v=pvrKHpXGO8E)
 - [Next.js: Autenticação e Gerenciamento de Tokens | Alura](https://cursos.alura.com.br/course/nextjs-autenticacao-gerenciamento-tokens/)
