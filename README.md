@@ -1,5 +1,6 @@
 # Next Auth Flow
 
+![melvin](public/images/melvin.webp)
 _don't mind the cats_
 
 The main goal of this project is to teach me about authentication and authorization flow and management both in the frontend and in the backend. I revisited an old backend project of mine which used Django Rest Framework to create an API for personal finance management with JWT authentication. That's the API that this project consumes in order to work.
