@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
   TODO: Essa é a melhor maneira de fazer isso? Pesquisar + pedir opiniões
 */
 async function getUser() {
-  const data = await authService.getSession();
+  const data = await authService.getSession({ctx: null, token: null});
   if (!data) redirect('/?error=401');
   return data;
 }

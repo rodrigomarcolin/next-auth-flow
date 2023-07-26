@@ -1,8 +1,14 @@
 import { HttpClient } from '../../infra/HttpClient';
 import { tokenService } from './tokenService';
+import { ILoginData } from '@/contexts/AuthContext';
+
+interface IGetSession {
+  ctx: any,
+  token: null | string
+}
 
 export const authService = {
-  async login({ username, password }) {
+  async login({ username, password }: ILoginData) {
     return HttpClient(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/jwt/create`,
       {
@@ -17,8 +23,23 @@ export const authService = {
       return body?.access;
     });
   },
-  async getSession(ctx = null, token = null) {
-    const usableToken = token || await tokenService.get(ctx);
+  async getSession({ctx = null , token = null} : IGetSession) {
+    const usableToken = token || await tokenService.get();
+    return HttpClient(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/users/me/`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer  ${usableToken}`,
+        },
+      },
+    ).then((response) => {
+      if (!response.ok) return null;
+      return response?.body;
+    });
+  },
+  async getClientSession({ctx = null , token = null} : IGetSession) {
+    const usableToken = token || await tokenService.getClientSide();
     return HttpClient(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/users/me/`,
       {

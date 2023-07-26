@@ -23,9 +23,6 @@ export const tokenService = {
     return nookies.get(null, ACCESS_TOKEN_KEY)[ACCESS_TOKEN_KEY];
   },
   async delete(ctx = null) {
-    await cookies().set(ctx, ACCESS_TOKEN_KEY, '', {
-      maxAge: 0,
-      path: '/',
-    });
+    await nookies.destroy(ctx, ACCESS_TOKEN_KEY);
   },
 };

@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import React from 'react';
-import Navbar from './components/Navbar';
+import Navbar from '../components/Navbar';
 import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {

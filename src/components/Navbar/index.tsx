@@ -7,7 +7,7 @@ import { AuthContext } from '@/contexts/AuthContext';
 import { useContext, useEffect } from 'react';
 
 const Navbar = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, user} = useContext(AuthContext);
 
   const loggedOutLinks: NavLinkType[] = [
     {

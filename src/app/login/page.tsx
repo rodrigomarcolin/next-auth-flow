@@ -3,11 +3,11 @@
 import { FormEvent, useContext, useState } from 'react';
 import { authService } from '@/services/auth/authService';
 import { useRouter } from 'next/navigation';
-import { AuthContext, LoginData } from '@/contexts/AuthContext';
+import { AuthContext, ILoginData } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
   const { login } = useContext(AuthContext);
-  const [formInfo, setFormInfo] = useState<LoginData>({
+  const [formInfo, setFormInfo] = useState<ILoginData>({
     username: '',
     password: '',
   });
