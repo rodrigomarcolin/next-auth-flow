@@ -37,8 +37,11 @@ export const authService = {
         cache: 'no-store'
       },
     ).then((response) => {
-      if (!response.ok) return null;
-      return {...response?.body};
+      if (!response.ok) return {ok: false, error: response.body, status: response.status, session:null, error:null};
+      return {session: response?.body, ok: true, error: null, status: response.status};
+    })
+    .catch((error) => {
+      return {error: error, ok: false, session: null}
     });
   },
   async logout() {

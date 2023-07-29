@@ -3,13 +3,17 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 const redirectToAuthedHomeIfAuthed = async () => {
-  const data = await authService.getSession({ token: null, client: false });
-  console.log('data', data)
-  if (!data) return;
-  redirect('/home');
+  const { session, ok, error } = await authService.getSession({
+    token: null,
+    client: false,
+  });
+  console.log('data', { session, ok, error });
+  if (ok && session) redirect('/home');
+
+  return ok;
 };
 export default async function Home() {
-  const redirect = await redirectToAuthedHomeIfAuthed();
+  const ok = await redirectToAuthedHomeIfAuthed();
   return (
     <>
       <main className="flex flex-col">
@@ -61,6 +65,26 @@ export default async function Home() {
             <p className="text-font">Gatitos e mais gatitos</p>
           </div>
         </section>
+
+        {!ok && (
+          <div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded fixed"
+            role="alert"
+          >
+            <strong className="font-bold">Eita!</strong>
+            <span className="block sm:inline">
+             &nbsp; Não foi possível conectar-se com o servidor.
+            </span>
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+              <svg
+                className="fill-current h-6 w-6 text-red-500"
+                role="button"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              ></svg>
+            </span>
+          </div>
+        )}
       </main>
     </>
   );

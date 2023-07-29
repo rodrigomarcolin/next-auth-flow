@@ -32,7 +32,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
   useEffect(() => {
     const updateUser = async () => {
-      const session = await authService.getSession({
+      const {session} = await authService.getSession({
         token: null,
         client: true,
       });

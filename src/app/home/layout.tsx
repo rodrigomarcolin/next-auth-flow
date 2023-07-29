@@ -6,9 +6,10 @@ import { redirect } from 'next/navigation';
   TODO: Essa é a melhor maneira de fazer isso? Pesquisar + pedir opiniões
 */
 async function redirectToHomeIfNotAuthenticated() {
-  const data = await authService.getSession({ token: null, client: false });
-  if (!data) redirect('/?error=401');
-  return data;
+  const  { session, ok } = await authService.getSession({ token: null, client: false });
+  if (!ok) redirect('/?error=ECONNREFUSED')
+  if (!session) redirect('/?error=401');
+  return session;
 }
 
 export default async function HomeLayout({
