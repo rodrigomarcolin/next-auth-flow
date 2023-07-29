@@ -3,17 +3,17 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 const redirectToAuthedHomeIfAuthed = async () => {
-  const { session, ok, error } = await authService.getSession({
+  const { session, error } = await authService.getSession({
     token: null,
     client: false,
   });
-  console.log('data', { session, ok, error });
-  if (ok && session) redirect('/home');
+  console.log('data', { session, error });
+  if (error && session) redirect('/home');
 
-  return ok;
+  return error;
 };
 export default async function Home() {
-  const ok = await redirectToAuthedHomeIfAuthed();
+  const error = await redirectToAuthedHomeIfAuthed();
   return (
     <>
       <main className="flex flex-col">
@@ -66,7 +66,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {!ok && (
+        {error && (
           <div
             className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded fixed"
             role="alert"

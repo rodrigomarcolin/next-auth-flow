@@ -47,7 +47,7 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
   async function login({ username, password }: ILoginData) {
     const token = await authService.login({ username, password });
-    const session = await authService.getSession({ client: true, token });
+    const {session} = await authService.getSession({ client: true, token });
     setUser(session);
   }
 

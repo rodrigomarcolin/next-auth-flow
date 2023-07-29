@@ -43,7 +43,7 @@ https://gourav.io/blog/nextjs-cheatsheet#add-eslint-to-nextjs-typescript-project
 ## TODO:
 
 - Refresh token management
-- Authenticated pages
+- Authenticated pages 
 - better parametrization (env variables)
 
 ## Learning Resources
