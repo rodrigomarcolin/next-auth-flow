@@ -1,6 +1,5 @@
 # Next Auth Flow
 
-![melvin](public/images/melvin.webp)
 _don't mind the cats_
 
 The main goal of this project is to teach me about authentication and authorization flow and management both in the frontend and in the backend. I revisited an old backend project of mine which used Django Rest Framework to create an API for personal finance management with JWT authentication. That's the API that this project consumes in order to work.
@@ -43,10 +42,6 @@ https://gourav.io/blog/nextjs-cheatsheet#add-eslint-to-nextjs-typescript-project
 
 ## TODO:
 
-- Cookie management is a complete mess. Using next/headers cookies() function
-  seems to be causing many different and obscure problems. Investigate further
-  and abstract this with a tokenService that works properly.
-- Logout flow
 - Refresh token management
 - Authenticated pages
 - better parametrization (env variables)

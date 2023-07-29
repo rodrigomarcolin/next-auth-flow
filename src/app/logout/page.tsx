@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '@/contexts/AuthContext';
 
-export default function LoginPage() {
+export default function LogoutPage() {
   const { logout } = useContext(AuthContext);
 
   const router = useRouter();

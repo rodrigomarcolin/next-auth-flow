@@ -16,10 +16,10 @@ export const tokenService = {
       path: '/',
     });
   },
-  async get() {
-    return cookies().get(ACCESS_TOKEN_KEY)?.value;
+  async getServerSide() {
+    return await cookies().get(ACCESS_TOKEN_KEY)?.value;
   },
-  getClientSide() {
+  async getClientSide() {
     return nookies.get(null, ACCESS_TOKEN_KEY)[ACCESS_TOKEN_KEY];
   },
   async delete(ctx = null) {

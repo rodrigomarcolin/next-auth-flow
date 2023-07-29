@@ -32,12 +32,12 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
   useEffect(() => {
     const updateUser = async () => {
-      const token = tokenService.getClientSide();
-      const session = await authService.getClientSession({ ctx: null, token });
-
+      const session = await authService.getSession({
+        token: null,
+        client: true,
+      });
       setUser(session);
     };
-
     updateUser();
   }, []);
 
@@ -47,8 +47,8 @@ export function AuthProvider({ children }: IAuthProviderProps) {
 
   async function login({ username, password }: ILoginData) {
     const token = await authService.login({ username, password });
-    const session = await authService.getClientSession({ ctx: null, token });
-    setUser({ username: session?.username || null });
+    const session = await authService.getSession({ client: true, token });
+    setUser(session);
   }
 
   async function logout() {

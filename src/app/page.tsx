@@ -1,6 +1,15 @@
+import { authService } from '@/services/auth/authService';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+const redirectToAuthedHomeIfAuthed = async () => {
+  const data = await authService.getSession({ token: null, client: false });
+  console.log('data', data)
+  if (!data) return;
+  redirect('/home');
+};
+export default async function Home() {
+  const redirect = await redirectToAuthedHomeIfAuthed();
   return (
     <>
       <main className="flex flex-col">

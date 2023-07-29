@@ -7,11 +7,13 @@ import { AuthContext, ILoginData } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
   const { login } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState(null);
   const [formInfo, setFormInfo] = useState<ILoginData>({
     username: '',
     password: '',
   });
-  
+
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     const name = event.currentTarget.name;
@@ -24,7 +26,11 @@ export default function LoginPage() {
   const router = useRouter();
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    login(formInfo).then(() => router.push('/protected'));
+    setLoading(true);
+    login(formInfo)
+      .then(() => router.push('/protected'))
+      .catch((erro) => setErro(erro))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -53,7 +59,8 @@ export default function LoginPage() {
             value={formInfo.password}
             onChange={handleChange}
           />
-
+          {!loading && (<div className='h-7'></div>)}
+          {loading && (<h3 className='h-7'>Carregando...</h3>)}
           <button
             type="submit"
             className="border border-2 border-primary px-4 py-1 hover:bg-primary-light"
@@ -61,6 +68,9 @@ export default function LoginPage() {
             Login
           </button>
         </form>
+        <pre>
+          {JSON.stringify(erro, null, 2)}
+        </pre>
         <img
           src="/images/gentleman.jpg"
           alt="Gatito"
