@@ -15,27 +15,32 @@ module.exports = {
       },
       colors: {
         primary: {
-          DEFAULT: 'var(--color-primary)',      // Primary color
-          light: 'var(--color-primary-light)',  // Light variant of primary color
-          dark: 'var(--color-primary-dark)',    // Dark variant of primary color
+          DEFAULT: 'var(--color-primary)', // Primary color
+          light: 'var(--color-primary-light)', // Light variant of primary color
+          dark: 'var(--color-primary-dark)', // Dark variant of primary color
+          bg: 'var(--color-primary-bg)',
         },
         secondary: {
-          DEFAULT: 'var(--color-secondary)',    // Secondary color
-          light: 'var(--color-secondary-light)',// Light variant of secondary color
-          dark: 'var(--color-secondary-dark)',  // Dark variant of secondary color
+          DEFAULT: 'var(--color-secondary)', // Secondary color
+          light: 'var(--color-secondary-light)', // Light variant of secondary color
+          dark: 'var(--color-secondary-dark)', // Dark variant of secondary color
         },
         accent: {
-          DEFAULT: 'var(--color-accent)',        // Accent color
-          light: 'var(--color-accent-light)',    // Light variant of accent color
-          dark: 'var(--color-accent-dark)',      // Dark variant of accent color
+          DEFAULT: 'var(--color-accent)', // Accent color
+          light: 'var(--color-accent-light)', // Light variant of accent color
+          dark: 'var(--color-accent-dark)', // Dark variant of accent color
         },
         font: {
-          DEFAULT: 'var(--color-font)',          // Default font color
-          light: 'var(--color-font-light)',      // Light variant of font color
-          dark: 'var(--color-font-dark)',        // Dark variant of font color
+          DEFAULT: 'var(--color-font)', // Default font color
+          light: 'var(--color-font-light)', // Light variant of font color
+          dark: 'var(--color-font-dark)', // Dark variant of font color
         },
-      }
+        money: {
+          negative: 'var(--color-money-negative)',
+          positive: 'var(--color-money-positive)',
+        },
+      },
     },
   },
   plugins: [],
-}
+};

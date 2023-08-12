@@ -13,12 +13,10 @@ const Navbar = () => {
     {
       to: '/',
       text: 'Início',
-      type: 'text',
     },
     {
       to: '/login',
       text: 'Entrar',
-      type: 'button',
     },
   ];
 
@@ -26,17 +24,14 @@ const Navbar = () => {
     {
       to: '/home',
       text: 'Início',
-      type: 'text',
     },
     {
       to: '/home/contas',
       text: 'Contas',
-      type: 'text',
     },
     {
       to: '/logout',
       text: 'Sair',
-      type: 'button',
     },
   ];
 
@@ -44,7 +39,6 @@ const Navbar = () => {
     <nav className="flex items-center gap-4 w-full max-w-7xl mx-auto justify-between">
       <Link href="/">
         <div className="flex items-center gap-4 hover:cursor-pointer">
-          <img src="/images/cute_close.jpg" width={32} height={32} alt="Logo" />
           <h2 className="font-bold text-xl md:text-3xl text-font">Manager</h2>
         </div>
       </Link>

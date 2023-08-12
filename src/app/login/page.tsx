@@ -38,11 +38,11 @@ export default function LoginPage() {
       <main className="flex flex-row flex-grow items-center justify-around px-4">
         <form
           onSubmit={(event) => handleSubmit(event)}
-          className="max-w-sm flex flex-col gap-3 w-full items-center border border-2 border-red-600 p-8"
+          className="max-w-sm flex flex-col gap-3 w-full items-center border border-2 border-primary p-8 bg-primary-light"
         >
           <h3 className="font-bold">Welcome!</h3>
           <input
-            className="border border-2 border-primary max-w-[256px] p-2 w-full"
+            className="border border-2 border-primary max-w-[256px] p-2 w-full bg-primary-bg"
             type="text"
             placeholder="Usuário"
             name="username"
@@ -51,7 +51,7 @@ export default function LoginPage() {
             onChange={handleChange}
           />
           <input
-            className="border border-2 border-primary max-w-[256px] p-2 w-full"
+            className="border border-2 border-primary max-w-[256px] p-2 w-full bg-primary-bg"
             type="password"
             name="password"
             placeholder="Senha"
@@ -63,7 +63,7 @@ export default function LoginPage() {
           {loading && (<h3 className='h-7'>Carregando...</h3>)}
           <button
             type="submit"
-            className="border border-2 border-primary px-4 py-1 hover:bg-primary-light"
+            className="border border-2 border-primary px-4 py-1 hover:bg-primary-light bg-primary-bg"
           >
             Login
           </button>

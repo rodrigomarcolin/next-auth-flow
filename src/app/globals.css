@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --color-primary: #49C5B6;       /* Primary color */
-    --color-primary-light: #68eede6e;; /* Light variant of primary color */
-    --color-primary-dark: #02BAC7;  /* Dark variant of primary color */
+    --color-primary: #575858;       /* Primary color */
+    --color-primary-light: #a9a9a9e9;; /* Light variant of primary color */
+    --color-primary-dark: #232525;  /* Dark variant of primary color */
   
     --color-secondary: #00FF00;     /* Secondary color */
     --color-secondary-light: #70FF70; /* Light variant of secondary color */
@@ -18,6 +18,10 @@
     --color-font: #333333;          /* Default font color */
     --color-font-light: #EEEEEE;    /* Light variant of font color */
     --color-font-dark: #111111;     /* Dark variant of font color */
+
+    --color-primary-bg: #E0E0E0;
+    --color-money-negative: #912727;
+    --color-money-positive: #437221;
   }
 
 * {
