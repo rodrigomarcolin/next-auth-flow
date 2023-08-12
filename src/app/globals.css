@@ -27,3 +27,15 @@
 * {
     box-sizing: border-box;
 }
+
+@keyframes colorChange {
+  0% { color: blue; }
+  25% { color: green; }
+  50% { color: red; }
+  75% { color: orange; }
+  100% { color: purple; }
+}
+
+.color-change-animation {
+  animation: colorChange 5s linear infinite;
+}

@@ -7,7 +7,7 @@ import { AuthContext } from '@/contexts/AuthContext';
 import { useContext, useEffect } from 'react';
 
 const Navbar = () => {
-  const { isAuthenticated, user} = useContext(AuthContext);
+  const { isAuthenticated, user } = useContext(AuthContext);
 
   const loggedOutLinks: NavLinkType[] = [
     {
@@ -39,6 +39,11 @@ const Navbar = () => {
     <nav className="flex items-center gap-4 w-full max-w-7xl mx-auto justify-between">
       <Link href="/">
         <div className="flex items-center gap-4 hover:cursor-pointer">
+          {/* <div className="flex items-center justify-center">
+            <div className="animate-spin text-4xl">
+              <p className="color-change-animation">Manager</p>
+            </div>
+          </div> */}
           <h2 className="font-bold text-xl md:text-3xl text-font">Manager</h2>
         </div>
       </Link>
