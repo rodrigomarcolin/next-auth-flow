@@ -4,6 +4,7 @@ import { FormEvent, useContext, useState } from 'react';
 import { authService } from '@/services/auth/authService';
 import { useRouter } from 'next/navigation';
 import { AuthContext, ILoginData } from '@/contexts/AuthContext';
+import { SpinContext } from '@/contexts/SpinContext';
 
 export default function LoginPage() {
   const { login } = useContext(AuthContext);
@@ -22,7 +23,7 @@ export default function LoginPage() {
       [name]: value,
     });
   };
-
+  const { spin, setSpin } = useContext(SpinContext);
   const router = useRouter();
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -59,8 +60,8 @@ export default function LoginPage() {
             value={formInfo.password}
             onChange={handleChange}
           />
-          {!loading && (<div className='h-7'></div>)}
-          {loading && (<h3 className='h-7'>Carregando...</h3>)}
+          {!loading && <div className="h-7"></div>}
+          {loading && <h3 className="h-7">Carregando...</h3>}
           <button
             type="submit"
             className="border border-2 border-primary px-4 py-1 hover:bg-primary-light bg-primary-bg"
@@ -68,13 +69,20 @@ export default function LoginPage() {
             Login
           </button>
         </form>
-        <pre>
-          {JSON.stringify(erro, null, 2)}
-        </pre>
+        <pre>{JSON.stringify(erro, null, 2)}</pre>
         <img
           src="/images/gentleman.jpg"
           alt="Gatito"
           className="max-w-xs w-full max-h-full hidden md:block"
+          onMouseDown={() => {
+            setSpin(true);
+          }}
+          onMouseUp={() => {
+            setSpin(false);
+          }}
+          onMouseOut={() => {
+            setSpin(false);
+          }}
         />
       </main>
     </>

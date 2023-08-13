@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { NavLinkType } from './interfaces';
 import { AuthContext } from '@/contexts/AuthContext';
 import { useContext, useEffect } from 'react';
+import { SpinContext } from '@/contexts/SpinContext';
 
 const Navbar = () => {
   const { isAuthenticated, user } = useContext(AuthContext);
-
+  const { spin } = useContext(SpinContext);
   const loggedOutLinks: NavLinkType[] = [
     {
       to: '/',
@@ -39,12 +40,16 @@ const Navbar = () => {
     <nav className="flex items-center gap-4 w-full max-w-7xl mx-auto justify-between">
       <Link href="/">
         <div className="flex items-center gap-4 hover:cursor-pointer">
-          {/* <div className="flex items-center justify-center">
-            <div className="animate-spin text-4xl">
-              <p className="color-change-animation">Manager</p>
+          {spin && (
+            <div className="flex items-center justify-center">
+              <div className="animate-spin text-xl md:text-3xl">
+                <p className="color-change-animation">Manager</p>
+              </div>
             </div>
-          </div> */}
-          <h2 className="font-bold text-xl md:text-3xl text-font">Manager</h2>
+          )}
+          {!spin && (
+            <h2 className="font-bold text-xl md:text-3xl text-font">Manager</h2>
+          )}
         </div>
       </Link>
       <div className="flex items-center gap-4">
